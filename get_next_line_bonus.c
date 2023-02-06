@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mal-jadd <mal-jadd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/29 22:41:54 by mal-jadd          #+#    #+#             */
-/*   Updated: 2023/02/06 07:41:46 by mal-jadd         ###   ########.fr       */
+/*   Created: 2023/02/05 20:26:06 by mal-jadd          #+#    #+#             */
+/*   Updated: 2023/02/06 07:47:15 by mal-jadd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include <stdio.h>
 //#include <fcntl.h>
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*get_next_line(int fd)
 {
-	static char	*fd_container;
+	static char	*fd_container[1024];
 	char		*fd_line;
 
 	if (fd < 0 || fd > 4096 || read(fd, 0, 0) < 0
 		|| BUFFER_SIZE <= 0 || BUFFER_SIZE >= 2147483647)
 		return (NULL);
-	fd_container = read_fd(fd, fd_container);
-	fd_line = ft_get_line(fd_container);
-	fd_container = ft_trim(fd_container);
+	fd_container[fd] = read_fd(fd, fd_container[fd]);
+	fd_line = ft_get_line(fd_container[fd]);
+	fd_container[fd] = ft_trim(fd_container[fd]);
 	return (fd_line);
 }
 
@@ -33,7 +33,7 @@ char	*read_fd(int fd, char *fd_container)
 	char	*buffer;
 	int		r_byte;
 
-	if (! fd_container)
+	if (!fd_container)
 	{
 		fd_container = (char *)malloc(1);
 		*fd_container = '\0';
@@ -55,16 +55,16 @@ char	*read_fd(int fd, char *fd_container)
 
 char	*ft_strchr(const char *str, int c)
 {
-	int		s_index;
+	int	s_index;
 
 	if (!str || !c)
-		return (NULL);
+		return (0);
 	s_index = 0;
 	while (str[s_index] && str[s_index] != c)
 		s_index++;
 	if (str[s_index] == c)
 		return ((char *)str + s_index);
-	return (NULL);
+	return (0);
 }
 
 char	*ft_strjoin(char *fd_container, char *buffer)
@@ -98,18 +98,27 @@ char	*ft_strjoin(char *fd_container, char *buffer)
 
 /* int main(void)
 {
-	char	*line;
-	int		fd = open("text.txt", O_RDONLY);
-	int		a = 20;
+	char	*line_1, *line_2, *line_3;
+	int		fd_1 = open("text1.txt", O_RDONLY);
+	int		fd_2 = open("text2.txt", O_RDONLY);
+	int		fd_3 = open("text3.txt", O_RDONLY);
+	int		a = 3;
 
 	while (a > 0)
 	{
-		line = get_next_line(fd);
-		printf("%s", line);
-		free(line);
+		line_1 = get_next_line(fd_1);
+		line_2 = get_next_line(fd_2);
+		line_3 = get_next_line(fd_3);
+		printf("fd_1[%s]", line_1);
+		printf("fd_2[%s]", line_2);
+		printf("fd_3[%s]", line_3);
+		free(line_1);
+		free(line_2);
+		free(line_3);
 		a--;
 	}
-	close(fd);
+	close(fd_1);
+	close(fd_2);
+	close(fd_3);
 	return 0;
-}
- */
+} */

@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mal-jadd <mal-jadd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/28 12:35:06 by mal-jadd          #+#    #+#             */
-/*   Updated: 2023/02/06 00:29:24 by mal-jadd         ###   ########.fr       */
+/*   Created: 2023/02/05 20:28:18 by mal-jadd          #+#    #+#             */
+/*   Updated: 2023/02/06 01:53:11 by mal-jadd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
+
 # include <stdlib.h>
 # include <unistd.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 2147
+#  define BUFFER_SIZE 1
 # endif
 
 char	*get_next_line(int fd);

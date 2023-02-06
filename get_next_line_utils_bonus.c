@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mal-jadd <mal-jadd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/29 22:41:51 by mal-jadd          #+#    #+#             */
-/*   Updated: 2023/02/06 00:24:07 by mal-jadd         ###   ########.fr       */
+/*   Created: 2023/02/05 20:28:12 by mal-jadd          #+#    #+#             */
+/*   Updated: 2023/02/06 00:37:56 by mal-jadd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t	ft_strlen(const char *str)
 {
